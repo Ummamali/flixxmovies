@@ -27,7 +27,10 @@
   </head>
   <body>
     <header class="main-header min-h-screen">
-      <nav class="navbar fixed top-0 left-0 w-full">
+      <nav
+        class="navbar bg-black/0 fixed top-0 left-0 w-full transition-colors"
+        id="navbar"
+      >
         <div class="mycontainer h-full flex items-center justify-between">
           <h2 class="text-white text-2xl"><a href="index.html">FLIXX</a></h2>
           <div class="flex items-center gap-2 text-sm text-gray-200">
@@ -44,8 +47,8 @@
           </div>
         </div>
       </nav>
-      <div class="showcase text-center">
-        <article class="mt-4 mb-10">
+      <div class="showcase text-center min-h-screen">
+        <article class="mt-4 mb-6">
           <h1 class="text-4xl text-sky-400 font-light uppercase">
             Browse Movies Data
           </h1>
@@ -55,15 +58,42 @@
             reviews.
           </p>
         </article>
-        <div id="slider" class="flex items-center gap-4"></div>
-        <div class="mt-8"></div>
+        <div id="slider" class="flex gap-4 py-8"></div>
       </div>
     </header>
-    <main>
-      <h1>Flixx Movies App</h1>
+    <main class="bg-gray-800">
+      <div class="py-10">
+        <div class="max-w-md mx-auto text-sm mb-2 text-gray-400">
+          <input type="radio" name="type" id="type-m" value="movies" checked />
+          <label for="type-m">Movies</label>
+          <input
+            type="radio"
+            name="type"
+            id="type-s"
+            value="tvshows"
+            class="ml-4"
+          />
+          <label for="type-s">TV Shows</label>
+        </div>
+        <form class="max-w-md mx-auto flex gap-2">
+          <input
+            type="text"
+            name="q"
+            class="block py-1 px-3 bg-transparent border border-gray-700 rounded-sm flex-1 text-white"
+            placeholder="Enter to search..."
+          />
+          <button type="submit" class="bg-yellow-500 py-1 px-8 rounded-sm">
+            Search
+          </button>
+        </form>
+      </div>
+      <div id="pmovies">
+        <div class="mycontainer gap-4" id="pmovies-container"></div>
+      </div>
     </main>
 
     <!-- Scripts -->
+    <script src="./scripts/shared.js"></script>
     <script src="./scripts/utils.js"></script>
     <script src="./scripts/home_components.js"></script>
     <script src="./scripts/home.js"></script>

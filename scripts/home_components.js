@@ -1,4 +1,6 @@
 // Contains components for home screen
+
+// --------------------- Showcase poster
 function showcasePosterComponent({ imgUrl, rating, imgAlt }) {
   const img = createCustomElement("img", {
     src: imgUrl,
@@ -24,6 +26,38 @@ function showcasePosterComponent({ imgUrl, rating, imgAlt }) {
   const main = createCustomElement("div", {
     class: "poster-card shadow-sm transition hover:cursor-pointer",
     children: [imgContainer, footer],
+  });
+
+  return main;
+}
+
+// -------------------------- Movie mini card
+
+function movieCardComponent({ imgUrl, imgAlt, title, releaseDate }) {
+  const img = createCustomElement("img", {
+    src: imgUrl,
+    alt: imgAlt,
+  });
+
+  // text footer
+  const footer = createCustomElement("div", {
+    class: "py-3 text-sm",
+    children: [
+      createCustomElement("p", {
+        children: [title],
+        class: "font-bold text-white",
+      }),
+      createCustomElement("p", {
+        children: `Release: ${releaseDate}`,
+        class: "text-white/40",
+      }),
+    ],
+  });
+
+  // assembling
+  const main = createCustomElement("div", {
+    children: [img, footer],
+    class: "bg-black/40 p-2.5 rounded hover:cursor-pointer hover:bg-black/30",
   });
 
   return main;

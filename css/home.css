@@ -6,10 +6,12 @@ header.main-header {
 
 .showcase {
   padding-top: var(--navbar-height);
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 #slider {
-  max-width: 1350px;
+  width: 1350px;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
   margin-left: auto;
@@ -20,6 +22,12 @@ header.main-header {
 .poster-card {
   display: grid;
   grid-template-rows: 1fr auto;
-  width: 250px;
-  height: 420px;
+  width: 370px;
+}
+
+
+#pmovies-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 }
