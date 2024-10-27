@@ -1,0 +1,25 @@
+/* styles for home index.html */
+
+header.main-header {
+  background: url("../images/showcase-bg.jpg") no-repeat center center/cover;
+}
+
+.showcase {
+  padding-top: var(--navbar-height);
+}
+
+#slider {
+  max-width: 1350px;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* showcase poster */
+.poster-card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  width: 250px;
+  height: 420px;
+}
