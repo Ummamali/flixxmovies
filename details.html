@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/details.css" />
+    <title>Movie Detail | Flixx Movies| Watch Movies Data</title>
+  </head>
+  <body>
+    <nav
+      class="navbar bg-black/0 fixed top-0 left-0 z-50 w-full transition-colors"
+      id="navbar"
+    >
+      <div class="mycontainer h-full flex items-center justify-between">
+        <h2 class="text-white text-2xl"><a href="index.html">FLIXX</a></h2>
+        <div class="flex items-center gap-2 text-sm text-gray-200">
+          <a
+            href="#"
+            class="py-2 px-4 hover:bg-yellow-500 hover:text-yellow-900"
+            >Movies</a
+          >
+          <a
+            href="#"
+            class="py-2 px-4 hover:bg-yellow-500 hover:text-yellow-900"
+            >TV Shows</a
+          >
+        </div>
+      </div>
+    </nav>
+    <main class="main-section min-h-screen bg-gray-800" id="main-section">
+      <div class="relative mycontainer">
+        <div class="py-8">
+          <a
+            href="./index.html"
+            class="btn mb-8 border-gray-400 text-gray-400 text-xs"
+            >Back to movies</a
+          >
+          <div class="flex gap-12">
+            <img
+              src="./images/no-image.jpg"
+              alt="thrones"
+              id="mv-poster"
+              class="max-w-80"
+            />
+            <article class="text-gray-300 text-sm">
+              <h2 id="mv-title" class="text-gray-100 text-2xl mb-2">
+                Loading Movie...
+              </h2>
+              <p class="mb-4">
+                <i class="fa-solid fa-star text-yellow-600"></i>
+                <span id="mv-rating">loading...</span>/10
+              </p>
+              <p class="mb-2">
+                Release Date: <span id="mv-release">loading...</span>
+              </p>
+              <p id="mv-description" class="mb-2 text-gray-300/90">
+                loading...
+              </p>
+              <h4 class="text-base">Genres</h4>
+              <ul id="mv-genres" class="mb-7"></ul>
+              <a href="index.html" class="btn border-yellow-500 text-yellow-600"
+                >Visit Movie Homepage</a
+              >
+            </article>
+          </div>
+        </div>
+        <div class="text-gray-300/80 pb-4">
+          <h2 class="text-xl text-gray-200 mb-3">Movie Info</h2>
+          <ul class="divide-y divide-gray-400/20 mb-4">
+            <li class="py-3">
+              <span class="text-gray-300">Budget:</span>
+              <span id="mv-budget" class="font-light">loading...</span>
+            </li>
+            <li class="py-3">
+              <span class="text-gray-300">Revenue:</span>
+              <span id="mv-revenue" class="font-light">loading...</span>
+            </li>
+            <li class="py-3">
+              <span class="text-gray-300">Runtime:</span>
+              <span id="mv-runtime" class="font-light">loading...</span>
+            </li>
+            <li class="py-3">
+              <span class="text-gray-300">Status:</span>
+              <span id="mv-status" class="font-light">loading...</span>
+            </li>
+          </ul>
+          <div>
+            <h4 class="text-gray-200/90 mb-1">Production Companies</h4>
+            <p id="mv-pdcompanies" class="text-sm">loading...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-zinc-900">
+      <div class="mycontainer py-6 flex items-center justify-between">
+        <a class="text-white text-xl" href="./index.html">FLIXX</a>
+        <div class="text-gray-300 flex items-center gap-3">
+          <a href=""><i class="fa-brands fa-facebook"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./scripts/shared.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <script src="./scripts/details.js"></script>
+  </body>
+</html>

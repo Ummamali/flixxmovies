@@ -28,7 +28,7 @@
   <body>
     <header class="main-header min-h-screen">
       <nav
-        class="navbar bg-black/0 fixed top-0 left-0 w-full transition-colors"
+        class="navbar z-50 bg-black/0 fixed top-0 left-0 w-full transition-colors"
         id="navbar"
       >
         <div class="mycontainer h-full flex items-center justify-between">
@@ -40,7 +40,7 @@
               >Movies</a
             >
             <a
-              href="#"
+              href="./tvshows.html"
               class="py-2 px-4 hover:bg-yellow-500 hover:text-yellow-900"
               >TV Shows</a
             >
@@ -58,24 +58,24 @@
             reviews.
           </p>
         </article>
-        <div id="slider" class="flex gap-4 py-8"></div>
+        <div id="slider" class="flex gap-4 py-8 overflow-x-hidden"></div>
       </div>
     </header>
     <main class="bg-gray-800">
-      <div class="py-10">
+      <form class="py-10" action="./search.html">
         <div class="max-w-md mx-auto text-sm mb-2 text-gray-400">
-          <input type="radio" name="type" id="type-m" value="movies" checked />
+          <input type="radio" name="type" id="type-m" value="MOVIE" checked />
           <label for="type-m">Movies</label>
           <input
             type="radio"
             name="type"
             id="type-s"
-            value="tvshows"
+            value="SERIES"
             class="ml-4"
           />
           <label for="type-s">TV Shows</label>
         </div>
-        <form class="max-w-md mx-auto flex gap-2">
+        <div class="max-w-md mx-auto flex gap-2">
           <input
             type="text"
             name="q"
@@ -85,12 +85,22 @@
           <button type="submit" class="bg-yellow-500 py-1 px-8 rounded-sm">
             Search
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
       <div id="pmovies">
-        <div class="mycontainer gap-4" id="pmovies-container"></div>
+        <div class="mycontainer gap-4 py-6" id="pmovies-container"></div>
       </div>
     </main>
+    <footer class="bg-zinc-900">
+      <div class="mycontainer py-6 flex items-center justify-between">
+        <a class="text-white text-xl" href="./index.html">FLIXX</a>
+        <div class="text-gray-300 flex items-center gap-3">
+          <a href=""><i class="fa-brands fa-facebook"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="./scripts/shared.js"></script>

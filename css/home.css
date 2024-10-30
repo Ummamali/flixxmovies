@@ -22,12 +22,10 @@ header.main-header {
 .poster-card {
   display: grid;
   grid-template-rows: 1fr auto;
-  width: 370px;
 }
 
-
-#pmovies-container{
+#pmovies-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
+  justify-content: center;
 }
