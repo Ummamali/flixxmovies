@@ -7,8 +7,8 @@ const searchForm = document.getElementById("search-form");
 
 function init() {
   // Hydrating the showcase
-  fetchFromMoviesDB("https://api.themoviedb.org/3/movie/top_rated").then(
-    (resObj) => {
+  fetchFromMoviesDB("https://api.themoviedb.org/3/movie/top_rated")
+    .then((resObj) => {
       console.log(resObj);
       resObj.results.forEach((r) => {
         slider.appendChild(
@@ -22,8 +22,36 @@ function init() {
           })
         );
       });
-    }
-  );
+    })
+    .then(() => {
+      // initializing the swiper
+      const swiper = new Swiper(".swiper", {
+        // Optional parameters
+        direction: "horizontal",
+        loop: true,
+        slidesPerView: 4,
+        spaceBetween: "24px",
+        autoplay: {
+          delay: 4000,
+        },
+
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+        },
+
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+      });
+    });
   // Hydrating the popular movies section
   fetchFromMoviesDB("https://api.themoviedb.org/3/movie/popular").then(
     (resObj) => {
@@ -47,28 +75,3 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
-
-// initializing the swiper
-const swiper = new Swiper(".swiper", {
-  // Optional parameters
-  direction: "horizontal",
-  loop: true,
-  slidesPerView: 4,
-  spaceBetween: "24px",
-
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination",
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: ".swiper-scrollbar",
-  },
-});

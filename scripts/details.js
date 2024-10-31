@@ -13,8 +13,71 @@ const textElementsIds = {
 const imgEl = document.getElementById("mv-poster");
 const genresEl = document.getElementById("mv-genres");
 const mainSection = document.getElementById("main-section");
+const homePageLink = document.getElementById("homepage-link");
+
+// Below is information about the api
+
+const detailsEndpoints = {};
+
+const attributeAPIMappings = {
+  MOVIE: {
+    title: "title",
+    posterUrl: (resObj) =>
+      `https://image.tmdb.org/t/p/w500${resObj.poster_path}`,
+    backdropUrl: (resObj) =>
+      `https://image.tmdb.org/t/p/w1280${resObj.backdrop_path}`,
+    releaseDate: "release_date",
+    description: "overview",
+    homepage: "homepage",
+    revenue: "revenue",
+    runtime: "runtime",
+    status: "status",
+    budget: "budget",
+    rating: (resObj) => resObj.vote_average.toFixed(1),
+    genre: (resObj) => resObj.genres.map((g) => g.name),
+    productionCompanies: (resObj) =>
+      resObj.production_companies.map((c) => c.name).join(", "),
+  },
+  SERIES: {
+    title: "name",
+    posterUrl: (resObj) =>
+      `https://image.tmdb.org/t/p/w500/${resObj.poster_path}`,
+    backdropUrl: (resObj) =>
+      `https://image.tmdb.org/t/p/w1280${resObj.backdrop_path}`,
+    releaseDate: "first_air_date",
+    description: "overview",
+    revenue: () => "Not Available",
+    runtime: (resObj) =>
+      `${resObj.number_of_seasons} ${
+        resObj.number_of_seasons > 1 ? "seasons" : "season"
+      }, ${resObj.number_of_episodes} episodes`,
+    status: "status",
+    homepage: "homepage",
+
+    budget: () => "Not Available",
+    rating: (resObj) => resObj.vote_average.toFixed(1),
+    genre: (resObj) => resObj.genres.map((g) => g.name),
+    productionCompanies: (resObj) =>
+      resObj.production_companies.map((c) => c.name).join(", "),
+  },
+};
+
+function getMappedObject(originalResObj, movieType) {
+  const mapped = {};
+  for (const [attr, resObjProperty] of Object.entries(
+    attributeAPIMappings[movieType]
+  )) {
+    mapped[attr] =
+      typeof resObjProperty === "function"
+        ? resObjProperty(originalResObj)
+        : originalResObj[resObjProperty];
+  }
+
+  return mapped;
+}
 
 function hydratePage(movieData) {
+  console.log(movieData);
   for (const [attribute, elementId] of Object.entries(textElementsIds)) {
     document.getElementById(elementId).innerText = movieData[attribute];
   }
@@ -24,6 +87,10 @@ function hydratePage(movieData) {
   movieData.genre.forEach((g) =>
     genresEl.appendChild(createCustomElement("li", { children: [g] }))
   );
+
+  homePageLink.setAttribute("href", movieData.homepage);
+
+  mainSection.style.backgroundImage = `url("${movieData.backdropUrl}")`;
 }
 
 async function fetchData(id, movieType) {
@@ -31,25 +98,7 @@ async function fetchData(id, movieType) {
     `${backendUrls.details[movieType]}${id}`
   );
 
-  return {
-    posterUrl: `https://image.tmdb.org/t/p/w500/${resObj.poster_path}`,
-    title: movieType === "SERIES" ? resObj.name : resObj.title,
-    releaseDate:
-      movieType === "SERIES" ? resObj.first_air_date : resObj.release_date,
-    description: resObj.overview,
-    revenue: movieType === "SERIES" ? "Not Available" : resObj.revenue,
-    runtime:
-      movieType === "SERIES"
-        ? `${resObj.number_of_episodes} episodes`
-        : resObj.runtime,
-    status: resObj.status,
-    budget: movieType === "SERIES" ? "Not Available" : resObj.budget,
-    rating: resObj.vote_average.toFixed(1),
-    genre: resObj.genres.map((g) => g.name),
-    productionCompanies: resObj.production_companies
-      .map((c) => c.name)
-      .join(", "),
-  };
+  return getMappedObject(resObj, movieType);
 }
 
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -58,13 +107,4 @@ document.addEventListener("DOMContentLoaded", (e) => {
   movieType = movieType ? movieType : "MOVIE";
 
   fetchData(id, movieType).then(hydratePage);
-  fetchFromMoviesDB(
-    `https://api.themoviedb.org/3/${
-      movieType === "MOVIE" ? "movie" : "tv"
-    }/${id}/images`
-  ).then((resObj) => {
-    const backdropUrl = `https://image.tmdb.org/t/p/w1280/${resObj.backdrops[0].file_path}`;
-
-    mainSection.style.backgroundImage = `url("${backdropUrl}")`;
-  });
 });
