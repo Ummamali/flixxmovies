@@ -8,15 +8,15 @@ header.main-header {
   padding-top: var(--navbar-height);
   display: grid;
   grid-template-rows: auto 1fr;
+  padding-bottom: 22px;
 }
 
-#slider {
-  width: 1350px;
+/* #slider {
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 /* showcase poster */
 .poster-card {
@@ -28,4 +28,10 @@ header.main-header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
+}
+
+/* swiper size */
+.swiper {
+  max-width: 1100px;
+  height: auto;
 }

@@ -31,7 +31,7 @@ function showcasePosterComponent({
   // assembling
   const main = createCustomElement("div", {
     class:
-      "poster-card w-64 shrink-0 shadow-sm transition hover:cursor-pointer hover:brightness-75",
+      "swiper-slide poster-card shadow-sm transition hover:cursor-pointer hover:brightness-75",
     children: [imgContainer, footer],
   });
 
