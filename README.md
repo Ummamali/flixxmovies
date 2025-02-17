@@ -2,6 +2,10 @@
 
 Flixx Movies is a frontend web application built with Vanilla JavaScript that provides users with an engaging experience for exploring movies and TV series. It fetches data dynamically from the **The Movie Database (TMDb)** REST API to display popular content, search results, and detailed information about movies and TV series.  
 
+It is a multiple page application that connects to The Movie Database (TMDb) API to retrieve and display data about movies and TV series. The app allows users to explore a wide range of popular movies and TV shows, providing detailed information like ratings, cast, and release dates. With its dynamic search functionality, users can easily find their favorite content by title, genre, or actor. Built with Vanilla JavaScript, the app delivers a responsive and seamless browsing experience. Flixx Movies makes it simple to stay up-to-date with the latest in entertainment, all through a user-friendly interface.
+
+<img src="./preview.jpg" alt="Application Preview Image"/>
+
 ---
 
 ## 📌 Project Overview  
