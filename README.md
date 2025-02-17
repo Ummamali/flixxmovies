@@ -67,6 +67,17 @@ This project uses [TMDb API](https://www.themoviedb.org/documentation/api) to fe
    ```bash
    git clone https://github.com/ummamali/flixxmovies.git
    cd flixxmovies
+2. **Install**  
+   ```bash 
    npm install
+3. **Run the application (Development Mode)**  
+   ```bash
    npm run dev
+4. **Package**  
+   ```bash
    npm run build
+
+## License  
+
+This project is licensed under the **MIT License**. For more details, visit [MIT License](https://opensource.org/licenses/MIT).  
+  
