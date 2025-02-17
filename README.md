@@ -63,17 +63,21 @@ This project uses [TMDb API](https://www.themoviedb.org/documentation/api) to fe
 
 ## 📦 Running the Application 
 
-1. **Clone the Repository**  
+1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/ummamali/flixxmovies.git
    cd flixxmovies
-2. **Install**  
+3. **Install**  
+
    ```bash 
    npm install
-3. **Run the application (Development Mode)**  
+4. **Run the application (Development Mode)**  
+
    ```bash
    npm run dev
-4. **Package**  
+6. **Package**  
+
    ```bash
    npm run build
 
